@@ -1,0 +1,72 @@
+events {}
+
+http {
+
+  include /etc/nginx/mime.types;
+
+  server {
+          listen 80;
+          server_name learn-nginx;
+
+          # # Location
+            # location /agatha { -> this is prefix match
+            #location = /agatha { -> this is exact match
+            #location ~ /agatha[0-9] {# -> this is regex match case sensitive
+            #location ~* /agatha[0-9] {# -> this is regex match case in-sensitive
+            # location ^~ /agatha {# -> this preferential prefix match
+            #
+            #   return 200 "preferential match";
+            # }
+            #
+            #  location ~* /agatha[0-9] {# -> this is regex match case in-sensitive
+            #
+            #   return 200 "Miss Marple.\nHercule Poirot.\n";
+            # }
+            #
+          # # Variables
+            # set $name $arg_name;
+            #
+            # return 200 "Host - $host\nURI - $uri\nArgs - $name\n";
+
+          root /srv/nginx-handbook-projects/static-demo;
+
+          # # Redirect
+            # location = /index_page {
+            #   return 307 /index.html;
+            # }
+            #
+            # location = /about_page {
+            #   return 307 /about.html;
+            # }
+          
+          # # Rewrite
+            # rewrite /index_page /index.html;
+            # rewrite /about_page /about.html;
+
+          # # Try files
+            # try_files $uri $uri/ /not_found;
+            #
+            # location /not_found {
+            #   return 404 "Not found";
+            # }
+          
+          # # Logging
+            # access_log /var/log/nginx/error.log warn; # the above warn level will be log error, crit, alert, emerg
+            # location / {
+            #   return 200 "this will be logged to the default file.\n";
+            # }
+            #
+            # location = /admin {
+            #   access_log /var/log/nginx/admin.log;
+            #
+            #   return 200 "this will be logged in a separate file.\n";
+            # }
+            #
+            # location = /no_logging {
+            #   access_log off;
+            #
+            #   return 200 "this will not be logged.\n";
+            # }
+      }
+}
+
